@@ -16,6 +16,7 @@ line.addEventListener("click",function(){
   p.classList.remove("animation");
   r.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   line.classList.add("animation");
   board.addEventListener("mousedown", function (e) {
     tool.beginPath();
@@ -41,6 +42,7 @@ inputwrite.addEventListener("click", function () {
   r.classList.remove("animation");
   line.classList.remove("animation");
   inputwrite.classList.add("animation");
+  e1.classList.remove("animation");
   b = false;
   draw = false;
   l = false;
@@ -74,6 +76,7 @@ inputcolor.addEventListener("change", function () {
   r.classList.remove("animation");
   line.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   b = false;
   draw = false;
   l = false;
@@ -90,6 +93,7 @@ inputStroke.addEventListener("change", function () {
   r.classList.remove("animation");
   line.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   b = false;
   draw = false;
   l = false;
@@ -110,6 +114,7 @@ c.addEventListener("click", function () {
   r.classList.remove("animation");
   line.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   var radius = 0;
   var s = 0;
   board.addEventListener("mousedown", function (e) {
@@ -142,6 +147,7 @@ p.addEventListener("click", function () {
   r.classList.remove("animation");
   line.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   board.addEventListener("mousedown", function (e) {
     tool.beginPath();
     console.log("mousedown");
@@ -176,6 +182,7 @@ r.addEventListener("click", function () {
   r.classList.add("animation");
   line.classList.remove("animation");
   inputwrite.classList.remove("animation");
+  e1.classList.remove("animation");
   let intialX = 0;
   let initialY = 0;
   board.addEventListener("mousedown", function (e) {
@@ -207,6 +214,46 @@ download.addEventListener("click", function () {
   link.click();
   link.delete;
 });
+let e1=document.querySelector(".eraser");
+e1.addEventListener("click",function(){
+  draw = false;
+  i = false;
+  l = true;
+  t = false;
+  b = false;
+  e = true;
+  c.classList.remove("animation");
+  p.classList.remove("animation");
+  r.classList.remove("animation");
+  line.classList.remove("animation");
+  inputwrite.classList.remove("animation");
+  e1.classList.add("animation");
+  tool.strokeStyle = "white";
+  tool.lineWidth = "9";
+  board.addEventListener("mousedown", function (e) {
+    
+    tool.beginPath();
+    console.log("mousedown");
+    tool.moveTo(getY(e.clientX),e.clientY);
+    console.log(getY(e.clientX));
+    isDown = true;
+  });
+  board.addEventListener("mousemove", function (e) {
+    if (e == true) {
+      console.log("mousemove");
+      tool.lineTo(getY(e.clientX), e.clientY);
+      tool.stroke();
+    }
+  });
+  board.addEventListener("mouseup", function (e) {
+    console.log("mouseup");
+    tool.lineWidth = "1";
+    isDown = false;
+    tool.strokeStyle = "black";
+    e = false;
+    l = false;
+  });
+})
 // calculate
 function getY(X) {
   //  let obj = change.getBoundingClientRect();
